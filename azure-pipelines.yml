@@ -7,25 +7,11 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  name: :Default
 
 
 steps:
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '6.x'
-- task: NuGetToolInstaller@1
-  inputs:
-    versionSpec: '6.0'
 
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'select'
-    vstsFeed: 'dc26eb46-1f62-4e18-a3bd-95979d4a59a7'
 
 
 - task: DotNetCoreCLI@2
