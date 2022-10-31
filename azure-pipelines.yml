@@ -18,10 +18,13 @@ steps:
   inputs:
     command: 'build'
 
+
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     
-  
+- task: WhiteSource@21
+  inputs:
+    cwd: '$(System.DefaultWorkingDirectory)'
