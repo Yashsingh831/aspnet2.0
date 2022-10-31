@@ -18,6 +18,11 @@ steps:
   inputs:
     command: 'build'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: '**/aspnettest/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   inputs:
