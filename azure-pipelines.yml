@@ -24,7 +24,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: test
-    projects: '**/*aspnettest/*.csproj'
+    projects: '**/aspnettest/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
 - script: dotnet test <test-project> --logger trx --collect "Code coverage"
