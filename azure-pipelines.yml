@@ -28,10 +28,9 @@ steps:
     vstsFeed: 'dc26eb46-1f62-4e18-a3bd-95979d4a59a7'
 
 
-- task: VSBuild@1
+- task: DotNetCoreCLI@2
   inputs:
-    solution: '**\*.sln'
-    clean: true
+    command: 'build'
 
 - task: PublishBuildArtifacts@1
   inputs:
