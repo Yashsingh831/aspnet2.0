@@ -21,24 +21,19 @@ steps:
 
 # ...
 # do this after other tasks such as building
-- task: DotNetCoreCLI@2
-  inputs:
-    command: test
-    projects: '**/aspnettest/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
-- script: dotnet test aspnettest --logger trx --collect "Code coverage"
-- task: PublishTestResults@2
-  inputs:
-    testRunner: VSTest
-    testResultsFiles: '**/*.trx'
+
+
+
 
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    
-- task: WhiteSource@21
+- task: PublishPipelineArtifact@1
   inputs:
-    cwd: '$(System.DefaultWorkingDirectory)'
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'dlls'
+    publishLocation: 'pipeline'
+    
