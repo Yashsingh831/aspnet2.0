@@ -7,33 +7,8 @@ trigger:
 - master
 
 pool:
-  vmImage: windows-latest
+  name: default
 
 
 steps:
-
-
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-
-
-# ...
-# do this after other tasks such as building
-
-
-
-
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: publish
-    publishWebProjects: True
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'dlls'
-    publishLocation: 'pipeline'
-    
+- script: echo "hello"
