@@ -23,10 +23,10 @@ jobs:
     - name: Restore dependencies
       run: |
         dotnet restore
-        mkdir dlls
+        
      
     - name: Build
-      run: dotnet publish --no-restore --output dlls
+      run: dotnet publish --no-restore 
     - name: Test
       run: |
          dotnet test --no-build --verbosity normal
@@ -34,7 +34,7 @@ jobs:
     - uses: actions/upload-artifact@v4.3.3
       with:
         name: drop
-        path: dlls
+        path: /home/runner/work/aspnet2.0/aspnet2.0/aspnet/bin/Debug/net6.0/publish/
         
       
     
