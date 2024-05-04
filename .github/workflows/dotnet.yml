@@ -21,9 +21,20 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: |
+        dotnet restore
+        mkdir dlls
+     
     - name: Build
-      run: dotnet publish --no-restore
+      run: dotnet publish --no-restore --output dlls
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: |
+         dotnet test --no-build --verbosity normal
+        
+    - uses: actions/upload-artifact@v4.3.3
+      with:
+        name: drop
+        path: dlls
+        
+      
     
