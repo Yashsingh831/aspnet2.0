@@ -35,6 +35,13 @@ jobs:
       with:
         name: drop
         path: /home/runner/work/aspnet2.0/aspnet2.0/aspnet/bin/Debug/net6.0/publish/
-        
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v4.1.7
+      with:
+        name: drop
+    
+          
       
     
