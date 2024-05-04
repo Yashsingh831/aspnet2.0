@@ -40,4 +40,4 @@ jobs:
       with:
         tags: githubaction.azurecr.io/dotnet:latest
         push: true
-        build-contexts: ./aspnet/bin/Debug/net6.0/publish/
+        build-contexts: /home/runner/work/aspnet2.0/aspnet2.0/aspnet/bin/Debug/net6.0/publish/
