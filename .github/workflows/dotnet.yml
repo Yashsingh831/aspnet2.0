@@ -8,6 +8,10 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+env:
+  AZURE_WEBAPP_NAME: githubactionsapp
+  AZURE_WEBAPP_PACKAGE_PATH: .
+  
 
 jobs:
   build:
@@ -42,6 +46,12 @@ jobs:
     - uses: actions/download-artifact@v4.1.7
       with:
         name: drop
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+      uses: azure/webapps-deploy@v3
+      with: 
+        app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
+        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+    
       
         
     
