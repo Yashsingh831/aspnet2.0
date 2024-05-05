@@ -30,6 +30,9 @@ jobs:
       run: |
         mkdir dlls 
         dotnet publish --no-restore --output dlls
+        ls 
+        cd dlls
+        ls
     - name: Test
       run: |
          dotnet test --no-build --verbosity normal
