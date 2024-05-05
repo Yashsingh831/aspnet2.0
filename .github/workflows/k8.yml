@@ -25,9 +25,9 @@ jobs:
             az account set --subscription 06dc52fa-b708-4f3c-bfe9-873f1fbeb59a
             az aks get-credentials --resource-group YASH-GITHUBACTION --name MYGITHUBACTION --overwrite-existing
 
-      - run: |
-          kubectl version --client
-          kubectl apply -f pod.yml
-          kubectl apply -f service.yml
+      - uses: Azure/k8s-deploy@v4.9:
+        with:
+          manifests: pod.yml
+
           
        
