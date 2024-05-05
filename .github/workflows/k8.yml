@@ -20,6 +20,7 @@ jobs:
         with:
           azcliversion: latest
           inlineScript: |
+            kubectl version --client
 
             az account set --subscription 06dc52fa-b708-4f3c-bfe9-873f1fbeb59a
             az aks get-credentials --resource-group YASH-GITHUBACTION --name MYGITHUBACTION --overwrite-existing
