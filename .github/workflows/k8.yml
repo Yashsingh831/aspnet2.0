@@ -2,7 +2,7 @@ name: Kubernetesdeploy
 on: workflow_dispatch
 permissions:
    id-token: write
-   content: read
+   contents: read
 jobs:
   deploy:
     runs-on: ubuntu-latest
