@@ -27,7 +27,9 @@ jobs:
         
      
     - name: Build
-      run: dotnet publish --no-restore 
+      run: |
+        mkdir dlls 
+        dotnet publish --no-restore --output dlls
     - name: Test
       run: |
          dotnet test --no-build --verbosity normal
@@ -40,4 +42,5 @@ jobs:
       with:
         tags: githubaction.azurecr.io/dotnet:latest
         push: true
-        build-contexts: /home/runner/work/aspnet2.0/aspnet2.0/aspnet/bin/Debug/net6.0/publish/
+        context: dlls/
+        
