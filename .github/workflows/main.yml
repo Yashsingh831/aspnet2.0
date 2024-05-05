@@ -46,6 +46,7 @@ jobs:
         tags: githubaction.azurecr.io/dotnet:latest
         push: true
         context: dlls
+        file: Dockerfile
         
         
         
