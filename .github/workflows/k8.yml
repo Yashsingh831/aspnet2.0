@@ -15,15 +15,22 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - uses: Azure/setup-kubectl@v4.0.0
-      - name: Azure CLI script
-        uses: azure/cli@v2
+      - name: Set up kubelogin for non-interactive login
+        uses: azure/use-kubelogin@v1
         with:
-          azcliversion: latest
-          inlineScript: |
-            
+          kubelogin-version: 'v0.0.25'
 
-            az account set --subscription 06dc52fa-b708-4f3c-bfe9-873f1fbeb59a
-            az aks get-credentials --resource-group YASH-GITHUBACTION --name MYGITHUBACTION --overwrite-existing
+      # Retrieves your Azure Kubernetes Service cluster's kubeconfig file
+      - name: Get K8s context
+        uses: azure/aks-set-context@v3
+        with:
+          resource-group: YASH-GITHUBACTION
+          cluster-name: MYGITHUBACTION
+          admin: 'false'
+          use-kubelogin: 'true'
+
+      # Deploys application based on given manifest file
+
 
       - uses: Azure/k8s-deploy@v4.9
         with:
