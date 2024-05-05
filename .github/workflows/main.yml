@@ -44,7 +44,7 @@ jobs:
     - uses: docker/build-push-action@v5.3.0
       with:
         tags: githubaction.azurecr.io/dotnet:latest
-        push: truec
+        push: true
         context: dlls
         
         
