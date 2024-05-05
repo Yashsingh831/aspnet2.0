@@ -26,5 +26,9 @@ jobs:
             az aks get-credentials --resource-group YASH-GITHUBACTION --name MYGITHUBACTION --overwrite-existing
             kubectl apply -f pod.yml
             kubectl apply -f service.yml
-
+      - run: |
+          kubectl version --client
+          kubectl apply -f pod.yml
+          kubectl apply -f service.yml
+          
        
