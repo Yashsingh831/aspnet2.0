@@ -2,6 +2,6 @@ name: myselfrunner
 on: push
 jobs:
   check:
-   runs-on: [self-hosted,Windows,X64]
+   runs-on: [self-hosted]
    steps:
    - run: echo "hello"
