@@ -1,0 +1,7 @@
+name: myselfrunner
+on: push
+jobs:
+  check:
+  runs-on: [self-hosted]
+  steps:
+  - run: echo "hello"
